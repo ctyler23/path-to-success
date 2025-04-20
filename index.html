@@ -117,19 +117,21 @@ window.addEventListener("DOMContentLoaded", () => {
     .then(res => res.json())
     .then(data => {
       const wall = document.querySelector(".brick-wall");
-      wall.innerHTML = "";
+wall.innerHTML = "";
 
-      data.bricks.forEach((brick, i) => {
-        const el = document.createElement("div");
-        el.classList.add("brick");
-        el.textContent = brick.displayName || "Supporter";
+data.bricks.forEach((brick) => {
+  const el = document.createElement("div");
+  el.classList.add("brick");
+  el.textContent = brick.displayName || "Supporter";
 
-        if (brick.count >= 1) {
-          el.setAttribute("data-referrals", brick.count);
-          el.title = `${brick.count} referral${brick.count > 1 ? "s" : ""}`;
-        }
-        wall.appendChild(el);
-      });
+  if (brick.count >= 1) {
+    el.setAttribute("data-referrals", brick.count);
+    el.title = `${brick.count} referral${brick.count > 1 ? "s" : ""}`;
+  }
+
+  wall.appendChild(el);
+});
+
     })
     .catch(err => {
       console.error("Error loading brick wall:", err);
