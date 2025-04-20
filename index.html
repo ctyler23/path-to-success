@@ -114,19 +114,22 @@
   <script>
 const GOAL = 60000; // your goal in USD
 
-fetch("https://script.google.com/macros/s/AKfycbw72SgBNi4eOYLclVGmfF8Dgs7-1Zsegw6cB7GwIojpIVP-Qwi_KY1WNXMUuRp3N96v3g/exec")
-  .then(res => res.json())
-  .then(data => {
-    const total = data.total || 0;
-    const percent = Math.min((total / GOAL) * 100, 100);
-    document.querySelector(".progress-fill").style.width = percent + "%";
-    document.querySelector(".progress-label").textContent = `$${total.toFixed(2)} raised`;
-  })
-  .catch(err => {
-    console.error("Error fetching donation progress:", err);
-    document.querySelector(".progress-label").textContent = "Unable to load progress";
-  });
+window.addEventListener("DOMContentLoaded", () => {
+  fetch("https://script.google.com/macros/s/AKfycbw72SgBNi4eOYLclVGmfF8Dgs7-1Zsegw6cB7GwIojpIVP-Qwi_KY1WNXMUuRp3N96v3g/exec")
+    .then(res => res.json())
+    .then(data => {
+      const total = data.total || 0;
+      const percent = Math.min((total / GOAL) * 100, 100);
+      document.querySelector(".progress-fill").style.width = percent + "%";
+      document.querySelector(".progress-label").textContent = `$${total.toFixed(2)} raised`;
+    })
+    .catch(err => {
+      console.error("Error fetching donation progress:", err);
+      document.querySelector(".progress-label").textContent = "Unable to load progress";
+    });
+});
 </script>
+
 
 </body>
 </html>
