@@ -149,20 +149,28 @@ window.addEventListener("DOMContentLoaded", () => {
 </script>
 
   <script>
-fetch("https://script.google.com/macros/s/AKfycbzO73cuS_BqKkwRFy-5HpEfjBuO5G3bR-NaUFbHSVkX1xjkT6jiD8y00VZGepqDFXvoDg/exec=true")
+fetch("https://script.google.com/macros/s/AKfycbzO73cuS_BqKkwRFy-5HpEfjBuO5G3bR-NaUFbHSVkX1xjkT6jiD8y00VZGepqDFXvoDg/exec?brickwall=true")
   .then(res => res.json())
   .then(data => {
     const wall = document.querySelector(".brick-wall");
-    wall.innerHTML = ""; // clear demo bricks
+    wall.innerHTML = "";
 
-    data.bricks.forEach(brick => {
+    data.bricks.forEach((brick, i) => {
       const el = document.createElement("div");
       el.classList.add("brick");
-      el.textContent = brick.name;
+      el.textContent = brick.displayName || "Supporter";
 
       if (brick.count >= 1) {
         el.setAttribute("data-referrals", brick.count);
         el.title = `${brick.count} referral${brick.count > 1 ? "s" : ""}`;
+      }
+
+      // Add row offset for running pattern: every second row skips first spot
+      const offsetBrick = ((Math.floor(i / 6) % 2 === 1) && i % 6 === 0);
+      if (offsetBrick) {
+        const spacer = document.createElement("div");
+        spacer.classList.add("brick-spacer");
+        wall.appendChild(spacer);
       }
 
       wall.appendChild(el);
