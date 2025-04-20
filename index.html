@@ -53,7 +53,7 @@
 
     <h3 style="margin-top: 2em;">Submit Your Info</h3>
 <form 
-  action="https://script.google.com/macros/s/AKfycbz7izm4unTTinRvV6HwYgJXCKgToKbNhNSdIpQt46a5yNQBmZsl8sD7mtfUqS7fI9j_FQ/exec" 
+  action="https://script.google.com/macros/s/AKfycbyZR74d_MKRrM-IfSUIzDS5hN5-xsWfPBKgSYwKuNPLY29hE3FaDnMmP4JmOYxGMUl2cw/exec" 
   method="POST" 
   target="hidden_iframe" 
   onsubmit="document.getElementById('form-status').textContent = '✅ Info submitted! Thank you!';">
@@ -83,14 +83,7 @@
     <a href="https://paypal.me/coletyler" class="cta-button" style="margin-top: 2em;">Donate via PayPal</a>
   </section>
 
-  <section id="wall">
-    <h2>Path to Success Wall</h2>
-    <div class="brick-wall">
-      <div class="brick" data-referrals="1" title="1 referral">Name1</div>
-      <div class="brick" data-referrals="3" title="3 referrals">Name2</div>
-      <div class="brick" data-referrals="4" title="4 referrals">Name3</div>
-    </div>
-  </section>
+  <div class="brick-wall"></div>
 
   <section id="newsletter">
     <h2>Teammate Newsletter</h2>
@@ -115,7 +108,8 @@
 const GOAL = 60000; // your goal in USD
 
 window.addEventListener("DOMContentLoaded", () => {
-  fetch("https://script.google.com/macros/s/AKfycbz7izm4unTTinRvV6HwYgJXCKgToKbNhNSdIpQt46a5yNQBmZsl8sD7mtfUqS7fI9j_FQ/exec")
+  // Update donation progress
+  fetch("https://script.google.com/macros/s/AKfycbyZR74d_MKRrM-IfSUIzDS5hN5-xsWfPBKgSYwKuNPLY29hE3FaDnMmP4JmOYxGMUl2cw/exec")
     .then(res => res.json())
     .then(data => {
       const total = data.total || 0;
@@ -127,11 +121,35 @@ window.addEventListener("DOMContentLoaded", () => {
       console.error("Error fetching donation progress:", err);
       document.querySelector(".progress-label").textContent = "Unable to load progress";
     });
+  
+  // Load brick wall
+  fetch("https://script.google.com/macros/s/AKfycbyZR74d_MKRrM-IfSUIzDS5hN5-xsWfPBKgSYwKuNPLY29hE3FaDnMmP4JmOYxGMUl2cw/exec?brickwall=true")
+    .then(res => res.json())
+    .then(data => {
+      const wall = document.querySelector(".brick-wall");
+      wall.innerHTML = "";
+
+      data.bricks.forEach(brick => {
+        const el = document.createElement("div");
+        el.classList.add("brick");
+        el.textContent = brick.displayName || brick.name;
+
+        if (brick.count >= 1) {
+          el.setAttribute("data-referrals", brick.count);
+          el.title = `${brick.count} referral${brick.count > 1 ? "s" : ""}`;
+        }
+
+        wall.appendChild(el);
+      });
+      })
+    .catch(err => {
+      console.error("Error loading brick wall:", err);
+    });
 });
 </script>
 
   <script>
-fetch("https://script.google.com/macros/s/AKfycbz7izm4unTTinRvV6HwYgJXCKgToKbNhNSdIpQt46a5yNQBmZsl8sD7mtfUqS7fI9j_FQ/exec=true")
+fetch("https://script.google.com/macros/s/AKfycbyZR74d_MKRrM-IfSUIzDS5hN5-xsWfPBKgSYwKuNPLY29hE3FaDnMmP4JmOYxGMUl2cw/exec=true")
   .then(res => res.json())
   .then(data => {
     const wall = document.querySelector(".brick-wall");
