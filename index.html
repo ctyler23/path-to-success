@@ -54,7 +54,7 @@
     <h3 style="margin-top: 2em;">Submit Your Info</h3>
 <form
   id="donation-form"
-  action="https://script.google.com/macros/s/AKfycbzO73cuS_BqKkwRFy-5HpEfjBuO5G3bR-NaUFbHSVkX1xjkT6jiD8y00VZGepqDFXvoDg/exec"
+  action="https://script.google.com/macros/s/AKfycbw_aiRmdfiZvHEDlCs2A0elyF1PglRa4CVXvRTssZauRQKjYTxHLrFbYmRQK7Oi06BWEA/exec"
   method="POST"
   target="hidden_iframe"
   onsubmit="showThankYou();"
@@ -99,7 +99,7 @@ const GOAL = 60000;
 
 window.addEventListener("DOMContentLoaded", () => {
   // Update donation progress
-  fetch("https://script.google.com/macros/s/AKfycbzO73cuS_BqKkwRFy-5HpEfjBuO5G3bR-NaUFbHSVkX1xjkT6jiD8y00VZGepqDFXvoDg/exec")
+  fetch("https://script.google.com/macros/s/AKfycbw_aiRmdfiZvHEDlCs2A0elyF1PglRa4CVXvRTssZauRQKjYTxHLrFbYmRQK7Oi06BWEA/exec")
     .then(res => res.json())
     .then(data => {
       const total = data.total || 0;
@@ -113,7 +113,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
   // Load brick wall
-  fetch("https://script.google.com/macros/s/AKfycbzO73cuS_BqKkwRFy-5HpEfjBuO5G3bR-NaUFbHSVkX1xjkT6jiD8y00VZGepqDFXvoDg/exec?brickwall=true")
+  fetch("https://script.google.com/macros/s/AKfycbw_aiRmdfiZvHEDlCs2A0elyF1PglRa4CVXvRTssZauRQKjYTxHLrFbYmRQK7Oi06BWEA/exec?brickwall=true")
     .then(res => res.json())
     .then(data => {
       const wall = document.querySelector(".brick-wall");
