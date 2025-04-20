@@ -78,7 +78,7 @@ li {
 }
 .brick-spacer {
   visibility: hidden;
-  width: 50px;  /* Half a brick to offset alternate rows */
+  width: 0px;  /* Half a brick to offset alternate rows */
 }
 /* Referral color variations */
 .brick[data-referrals=\"1\"] { background-color: #cc6600; }
