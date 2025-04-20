@@ -53,7 +53,7 @@
 
     <h3 style="margin-top: 2em;">Submit Your Info</h3>
 <form 
-  action="https://script.google.com/macros/s/AKfycbyZR74d_MKRrM-IfSUIzDS5hN5-xsWfPBKgSYwKuNPLY29hE3FaDnMmP4JmOYxGMUl2cw/exec" 
+  action="https://script.google.com/macros/s/AKfycbzO73cuS_BqKkwRFy-5HpEfjBuO5G3bR-NaUFbHSVkX1xjkT6jiD8y00VZGepqDFXvoDg/exec" 
   method="POST" 
   target="hidden_iframe" 
   onsubmit="document.getElementById('form-status').textContent = '✅ Info submitted! Thank you!';">
@@ -109,7 +109,7 @@ const GOAL = 60000; // your goal in USD
 
 window.addEventListener("DOMContentLoaded", () => {
   // Update donation progress
-  fetch("https://script.google.com/macros/s/AKfycbyZR74d_MKRrM-IfSUIzDS5hN5-xsWfPBKgSYwKuNPLY29hE3FaDnMmP4JmOYxGMUl2cw/exec")
+  fetch("https://script.google.com/macros/s/AKfycbzO73cuS_BqKkwRFy-5HpEfjBuO5G3bR-NaUFbHSVkX1xjkT6jiD8y00VZGepqDFXvoDg/exec")
     .then(res => res.json())
     .then(data => {
       const total = data.total || 0;
@@ -123,7 +123,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   
   // Load brick wall
-  fetch("https://script.google.com/macros/s/AKfycbyZR74d_MKRrM-IfSUIzDS5hN5-xsWfPBKgSYwKuNPLY29hE3FaDnMmP4JmOYxGMUl2cw/exec?brickwall=true")
+  fetch("https://script.google.com/macros/s/AKfycbzO73cuS_BqKkwRFy-5HpEfjBuO5G3bR-NaUFbHSVkX1xjkT6jiD8y00VZGepqDFXvoDg/exec?brickwall=true")
     .then(res => res.json())
     .then(data => {
       const wall = document.querySelector(".brick-wall");
@@ -149,7 +149,7 @@ window.addEventListener("DOMContentLoaded", () => {
 </script>
 
   <script>
-fetch("https://script.google.com/macros/s/AKfycbyZR74d_MKRrM-IfSUIzDS5hN5-xsWfPBKgSYwKuNPLY29hE3FaDnMmP4JmOYxGMUl2cw/exec=true")
+fetch("https://script.google.com/macros/s/AKfycbzO73cuS_BqKkwRFy-5HpEfjBuO5G3bR-NaUFbHSVkX1xjkT6jiD8y00VZGepqDFXvoDg/exec=true")
   .then(res => res.json())
   .then(data => {
     const wall = document.querySelector(".brick-wall");
