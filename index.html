@@ -107,7 +107,7 @@ document.getElementById('form-status').innerHTML =
   </footer>
 
   <script>
-const GOAL = 60000; // your goal in USD
+const GOAL = 10000;
 
 window.addEventListener("DOMContentLoaded", () => {
   // Update donation progress
@@ -123,7 +123,7 @@ window.addEventListener("DOMContentLoaded", () => {
       console.error("Error fetching donation progress:", err);
       document.querySelector(".progress-label").textContent = "Unable to load progress";
     });
-  
+
   // Load brick wall
   fetch("https://script.google.com/macros/s/AKfycbzO73cuS_BqKkwRFy-5HpEfjBuO5G3bR-NaUFbHSVkX1xjkT6jiD8y00VZGepqDFXvoDg/exec?brickwall=true")
     .then(res => res.json())
@@ -131,56 +131,55 @@ window.addEventListener("DOMContentLoaded", () => {
       const wall = document.querySelector(".brick-wall");
       wall.innerHTML = "";
 
-      data.bricks.forEach(brick => {
+      data.bricks.forEach((brick, i) => {
         const el = document.createElement("div");
         el.classList.add("brick");
-        el.textContent = brick.displayName || brick.name;
+        el.textContent = brick.displayName || "Supporter";
 
         if (brick.count >= 1) {
           el.setAttribute("data-referrals", brick.count);
           el.title = `${brick.count} referral${brick.count > 1 ? "s" : ""}`;
         }
 
+        // Add offset brick spacer for "running bond" pattern
+        const offsetBrick = ((Math.floor(i / 6) % 2 === 1) && i % 6 === 0);
+        if (offsetBrick) {
+          const spacer = document.createElement("div");
+          spacer.classList.add("brick-spacer");
+          wall.appendChild(spacer);
+        }
+
         wall.appendChild(el);
       });
-      })
+    })
     .catch(err => {
       console.error("Error loading brick wall:", err);
     });
-});
-</script>
 
-  <script>
-fetch("https://script.google.com/macros/s/AKfycbzO73cuS_BqKkwRFy-5HpEfjBuO5G3bR-NaUFbHSVkX1xjkT6jiD8y00VZGepqDFXvoDg/exec?brickwall=true")
-  .then(res => res.json())
-  .then(data => {
-    const wall = document.querySelector(".brick-wall");
-    wall.innerHTML = "";
+  // Donation form thank-you message with referral code
+  const form = document.getElementById('donation-form');
+  form.addEventListener('submit', () => {
+    const name = form.elements["name"].value.trim();
+    const email = form.elements["email"].value.trim().toLowerCase();
+    const code = generateReferralCode(name, email);
 
-    data.bricks.forEach((brick, i) => {
-      const el = document.createElement("div");
-      el.classList.add("brick");
-      el.textContent = brick.displayName || "Supporter";
-
-      if (brick.count >= 1) {
-        el.setAttribute("data-referrals", brick.count);
-        el.title = `${brick.count} referral${brick.count > 1 ? "s" : ""}`;
-      }
-
-      // Add row offset for running pattern: every second row skips first spot
-      const offsetBrick = ((Math.floor(i / 6) % 2 === 1) && i % 6 === 0);
-      if (offsetBrick) {
-        const spacer = document.createElement("div");
-        spacer.classList.add("brick-spacer");
-        wall.appendChild(spacer);
-      }
-
-      wall.appendChild(el);
-    });
-  })
-  .catch(err => {
-    console.error("Error loading brick wall:", err);
+    setTimeout(() => {
+      document.getElementById('form-status').innerHTML =
+        `✅ Thank you, <strong>${name}</strong>!<br>Your referral code is: <code>${code}</code><br>Share it with others to build your brick!`;
+    }, 1000); // delay to let iframe post
   });
+});
+
+// Simple referral code generator based on name + email hash
+function generateReferralCode(name, email) {
+  const base = name.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 5);
+  let hash = 0;
+  for (let i = 0; i < email.length; i++) {
+    hash = ((hash << 5) - hash) + email.charCodeAt(i);
+    hash |= 0;
+  }
+  return `${base}_${Math.abs(hash).toString(36).slice(0, 5)}`;
+}
 </script>
 
 </body>
