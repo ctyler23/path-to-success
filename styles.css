@@ -5,6 +5,7 @@ body {
   background-color: #1c1c1c;
   color: #f5f5f5;
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 header, footer {
   background-color: #2c2c2c;
@@ -12,11 +13,16 @@ header, footer {
   padding: 1.5em;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
 }
 section {
   padding: 2em;
   max-width: 900px;
   margin: auto;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: 0.3s;
 }
 .cta-button {
   background-color: #d35400;
@@ -27,10 +33,11 @@ section {
   font-weight: bold;
   display: inline-block;
   margin-top: 1em;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 .cta-button:hover {
   background-color: #e67e22;
+  transform: scale(1.05);
 }
 ul {
   list-style-type: none;
@@ -38,6 +45,7 @@ ul {
 }
 li {
   margin-bottom: 0.75em;
+  transition: color 0.3s ease;
 }
 .brick-wall {
   display: flex;
@@ -50,6 +58,10 @@ li {
   border: 2px solid #444;
   padding: 1em;
   border-radius: 10px;
+  animation: fadeInUp 0.9s ease forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
+  transform: translateY(20px);
 }
 .brick {
   background-color: #a84300;
@@ -60,6 +72,10 @@ li {
   text-align: center;
   font-weight: bold;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.brick:hover {
+  transform: translateY(-4px);
 }
 .brick[data-referrals="2"] { background-color: #cc6600; }
 .brick[data-referrals="3"] { background-color: #b36b00; }
@@ -80,16 +96,26 @@ li {
   font-weight: bold;
   text-align: center;
   line-height: 24px;
+  transition: width 0.5s ease;
 }
 a {
   color: #ffa726;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 a:hover {
   text-decoration: underline;
+  color: #ffcc80;
 }
 @media (max-width: 600px) {
   section { padding: 1em; }
   .brick { min-width: 80px; font-size: 0.9em; }
   .cta-button { font-size: 0.9em; padding: 0.6em 1em; }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
