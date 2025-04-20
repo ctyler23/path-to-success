@@ -3,13 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Test Site</title>
+  <title>Path to Success</title>
   <link rel="stylesheet" href="styles.css" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });
+  </script>
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 0; background: #fdfdfd; color: #333; }
+    header, footer { background: #004080; color: white; padding: 1em; text-align: center; }
+    section { padding: 2em; max-width: 800px; margin: auto; }
+    .cta-button { background: #ff9900; color: white; padding: 0.8em 1.2em; text-decoration: none; border-radius: 5px; }
+    .brick-wall { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1em; }
+    .brick { background: #c1440e; color: white; padding: 1em; border-radius: 4px; min-width: 100px; text-align: center; }
+    .brick[data-referrals="2"] { background: #cc6600; }
+    .brick[data-referrals="3"] { background: #b36b00; }
+    .brick[data-referrals="4"] { background: #996600; }
+  </style>
 </head>
 <body>
   <header>
-    <h1>Hello World</h1>
-    <p>This is a working demo!</p>
+    <h1>Path to Success</h1>
+    <p>Support my college journey & earn personalized perks</p>
+    <a href="#donate" class="cta-button">Donate Now</a>
   </header>
+
+  <section id="donate">
+    <h2>Donation Tiers</h2>
+    <ul>
+      <li><strong>$5 – Bricklayer:</strong> Your name on my digital brick wall</li>
+      <li><strong>$10 – Custom Brick:</strong> Add a message on your brick</li>
+      <li><strong>$15 – Pen Pal:</strong> Handwritten thank-you letter</li>
+      <li><strong>$30 – Maker:</strong> Small 3D printed gift</li>
+      <li><strong>$60 – Teammate:</strong> Biweekly college journey newsletter</li>
+      <li><strong>$100+ – Champion:</strong> Special honor with less time commitment</li>
+    </ul>
+    <p>Recurring donations? Just donate again with the same name/email. We’ll add to your brick, not duplicate it!</p>
+    <!-- Replace with actual PayPal donation buttons -->
+    <a href="https://paypal.me/yourname" class="cta-button">Donate via PayPal</a>
+  </section>
+
+  <section id="wall">
+    <h2>Path to Success Wall</h2>
+    <div class="brick-wall">
+      <div class="brick" data-referrals="1">Alex</div>
+      <div class="brick" data-referrals="3">Jordan</div>
+      <div class="brick" data-referrals="4">Taylor</div>
+      <!-- Dynamically add bricks here later -->
+    </div>
+  </section>
+
+  <section id="transparency">
+    <h2>Transparency & Ethics</h2>
+    <p>Every dollar donated goes directly to college-related expenses — tuition, textbooks, and basic needs. This site uses Google Analytics with anonymized data to understand site traffic. No personal data is collected or sold.</p>
+  </section>
+
+  <section id="referrals">
+    <h2>Referral Program</h2>
+    <p>Share your custom link. If someone donates using it, your brick will reflect it with a special color and number!</p>
+    <p>Email me after sharing: <a href="mailto:your@email.com">your@email.com</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Your Name | <a href="#transparency" style="color:white;">Transparency</a></p>
+  </footer>
 </body>
 </html>
