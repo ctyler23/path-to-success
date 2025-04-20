@@ -107,7 +107,7 @@ document.getElementById('form-status').innerHTML =
   </footer>
 
   <script>
-const GOAL = 10000;
+const GOAL = 60000;
 
 window.addEventListener("DOMContentLoaded", () => {
   // Update donation progress
@@ -141,7 +141,6 @@ window.addEventListener("DOMContentLoaded", () => {
           el.title = `${brick.count} referral${brick.count > 1 ? "s" : ""}`;
         }
 
-        // Add offset brick spacer for "running bond" pattern
         const offsetBrick = ((Math.floor(i / 6) % 2 === 1) && i % 6 === 0);
         if (offsetBrick) {
           const spacer = document.createElement("div");
@@ -166,11 +165,10 @@ window.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       document.getElementById('form-status').innerHTML =
         `✅ Thank you, <strong>${name}</strong>!<br>Your referral code is: <code>${code}</code><br>Share it with others to build your brick!`;
-    }, 1000); // delay to let iframe post
+    }, 1000); // delay for iframe submission
   });
 });
 
-// Simple referral code generator based on name + email hash
 function generateReferralCode(name, email) {
   const base = name.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 5);
   let hash = 0;
