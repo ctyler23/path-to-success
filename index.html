@@ -56,7 +56,9 @@
   action="https://script.google.com/macros/s/AKfycbzO73cuS_BqKkwRFy-5HpEfjBuO5G3bR-NaUFbHSVkX1xjkT6jiD8y00VZGepqDFXvoDg/exec" 
   method="POST" 
   target="hidden_iframe" 
-  onsubmit="document.getElementById('form-status').textContent = '✅ Info submitted! Thank you!';">
+  onsubmit="const referralCode = form.elements["email"].value.trim();
+document.getElementById('form-status').innerHTML = 
+  `✅ Info submitted! Thank you!<br>Your referral code is: <code>${referralCode}</code><br>Share this with friends to grow your brick!`;">
 
   <div class="form-group">
     <input type="text" name="name" placeholder="Your Name" required />
