@@ -53,7 +53,7 @@
 
     <h3 style="margin-top: 2em;">Submit Your Info</h3>
 <form 
-  action="https://script.google.com/macros/s/AKfycbw72SgBNi4eOYLclVGmfF8Dgs7-1Zsegw6cB7GwIojpIVP-Qwi_KY1WNXMUuRp3N96v3g/exec" 
+  action="https://script.google.com/macros/s/AKfycbz7izm4unTTinRvV6HwYgJXCKgToKbNhNSdIpQt46a5yNQBmZsl8sD7mtfUqS7fI9j_FQ/exec" 
   method="POST" 
   target="hidden_iframe" 
   onsubmit="document.getElementById('form-status').textContent = '✅ Info submitted! Thank you!';">
@@ -115,7 +115,7 @@
 const GOAL = 60000; // your goal in USD
 
 window.addEventListener("DOMContentLoaded", () => {
-  fetch("https://script.google.com/macros/s/AKfycbw72SgBNi4eOYLclVGmfF8Dgs7-1Zsegw6cB7GwIojpIVP-Qwi_KY1WNXMUuRp3N96v3g/exec")
+  fetch("https://script.google.com/macros/s/AKfycbz7izm4unTTinRvV6HwYgJXCKgToKbNhNSdIpQt46a5yNQBmZsl8sD7mtfUqS7fI9j_FQ/exec")
     .then(res => res.json())
     .then(data => {
       const total = data.total || 0;
@@ -131,7 +131,7 @@ window.addEventListener("DOMContentLoaded", () => {
 </script>
 
   <script>
-fetch("https://script.google.com/macros/s/AKfycbwQZchjX2TJagiMmz0qsti_jXqCA2poY3MdRsvDZIfPH5Yqd4fLVnq0fPiDcCSuxs2GzQ/exec?brickwall=true")
+fetch("https://script.google.com/macros/s/AKfycbz7izm4unTTinRvV6HwYgJXCKgToKbNhNSdIpQt46a5yNQBmZsl8sD7mtfUqS7fI9j_FQ/exec=true")
   .then(res => res.json())
   .then(data => {
     const wall = document.querySelector(".brick-wall");
