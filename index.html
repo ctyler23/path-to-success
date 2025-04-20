@@ -130,6 +130,30 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+  <script>
+fetch("https://script.google.com/macros/s/AKfycbwQZchjX2TJagiMmz0qsti_jXqCA2poY3MdRsvDZIfPH5Yqd4fLVnq0fPiDcCSuxs2GzQ/exec?brickwall=true")
+  .then(res => res.json())
+  .then(data => {
+    const wall = document.querySelector(".brick-wall");
+    wall.innerHTML = ""; // clear demo bricks
+
+    data.bricks.forEach(brick => {
+      const el = document.createElement("div");
+      el.classList.add("brick");
+      el.textContent = brick.name;
+
+      if (brick.count >= 1) {
+        el.setAttribute("data-referrals", brick.count);
+        el.title = `${brick.count} referral${brick.count > 1 ? "s" : ""}`;
+      }
+
+      wall.appendChild(el);
+    });
+  })
+  .catch(err => {
+    console.error("Error loading brick wall:", err);
+  });
+</script>
 
 </body>
 </html>
