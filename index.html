@@ -116,7 +116,7 @@ window.addEventListener("DOMContentLoaded", () => {
   fetch("https://script.google.com/macros/s/AKfycbw_aiRmdfiZvHEDlCs2A0elyF1PglRa4CVXvRTssZauRQKjYTxHLrFbYmRQK7Oi06BWEA/exec?brickwall=true")
     .then(res => res.json())
     .then(data => {
-const container = document.getElementById(".brick-wall");
+const container = document.getElementById("brick-wall-container");
 container.innerHTML = "";
 
 const bricks = data.bricks;
