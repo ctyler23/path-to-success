@@ -47,15 +47,6 @@ li {
   margin-bottom: 0.75em;
   transition: color 0.3s ease;
 }
-.brick-wall {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* center bricks per row */
-  gap: 10px; /* spacing between bricks */
-  max-width: 650px;
-  margin: 2em auto;
-}
-
 .brick {
   background-color: #a84300;
   color: white;
