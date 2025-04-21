@@ -124,8 +124,8 @@ let index = 0;
 let rowNumber = 0;
 
 while (index < bricks.length) {
-  const rowType = rowNumber % 2 === 0 ? "four" : "five";
-  const rowLength = rowType === "four" ? 4 : 5;
+  const rowType = rowNumber % 2 === 0 ? "five" : "four";
+  const rowLength = rowType === "five" ? 5 : 4;
 
   const row = document.createElement("div");
   row.classList.add("brick-row");
