@@ -52,7 +52,7 @@ li {
   flex-wrap: wrap;
   justify-content: center; /* center bricks per row */
   gap: 10px; /* spacing between bricks */
-  max-width: 720px;
+  max-width: 660px;
   margin: 2em auto;
 }
 
@@ -104,7 +104,10 @@ li {
   position: relative;
   z-index: 2;
 }
-
+.brick-spacer {
+  width: 50px;
+  visibility: hidden;
+}
 @keyframes fadeIn {
   to {
     opacity: 1;
@@ -116,6 +119,16 @@ li {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+/* Form input spacing */
+form input,
+form textarea {
+  margin-bottom: 1em;
+}
+
+input[name="name"].error {
+  border-color: red;
+  background-color: #3a1c1c;
 }
 .progress-bar {
   background-color: #222;
