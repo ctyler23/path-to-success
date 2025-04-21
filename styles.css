@@ -47,6 +47,14 @@ li {
   margin-bottom: 0.75em;
   transition: color 0.3s ease;
 }
+#brick-wall-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-width: 650px;
+  margin: 2em auto;
+}
 .brick {
   background-color: #a84300;
   color: white;
