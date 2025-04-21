@@ -186,3 +186,12 @@ a:hover {
     transform: translateY(0);
   }
 }
+.vertical-label {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  transform: rotate(180deg); /* Optional: flip so it's bottom-up */
+  font-weight: bold;
+  color: #ffcc00;
+  font-size: 1.1em;
+  margin-right: 1em;
+}
