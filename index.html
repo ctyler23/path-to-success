@@ -116,22 +116,47 @@ window.addEventListener("DOMContentLoaded", () => {
   fetch("https://script.google.com/macros/s/AKfycbw_aiRmdfiZvHEDlCs2A0elyF1PglRa4CVXvRTssZauRQKjYTxHLrFbYmRQK7Oi06BWEA/exec?brickwall=true")
     .then(res => res.json())
     .then(data => {
-      const wall = document.querySelector(".brick-wall");
-wall.innerHTML = "";
+const container = document.getElementById(".brick-wall");
+container.innerHTML = "";
 
-data.bricks.forEach((brick) => {
-  const el = document.createElement("div");
-  el.classList.add("brick");
-  el.textContent = brick.displayName || "Supporter";
+const bricks = data.bricks;
+let index = 0;
+let rowNumber = 0;
 
-  if (brick.count >= 1) {
-    el.setAttribute("data-referrals", brick.count);
-    el.title = `${brick.count} referral${brick.count > 1 ? "s" : ""}`;
+while (index < bricks.length) {
+  const rowType = rowNumber % 2 === 0 ? "five" : "six";
+  const rowLength = rowType === "five" ? 5 : 6;
+
+  if (rowType === "five") {
+    // Add a spacer before row
+    const spacerStart = document.createElement("div");
+    spacerStart.classList.add("brick-spacer");
+    container.appendChild(spacerStart);
   }
 
-  wall.appendChild(el);
-});
+  for (let i = 0; i < rowLength && index < bricks.length; i++) {
+    const brick = bricks[index++];
+    const el = document.createElement("div");
+    el.classList.add("brick");
+    el.textContent = brick.displayName || "Supporter";
 
+    if (brick.count >= 1) {
+      el.setAttribute("data-referrals", brick.count);
+      el.title = `${brick.count} referral${brick.count > 1 ? "s" : ""}`;
+    }
+
+    container.appendChild(el);
+  }
+
+  if (rowType === "five") {
+    // Add a spacer after row
+    const spacerEnd = document.createElement("div");
+    spacerEnd.classList.add("brick-spacer");
+    container.appendChild(spacerEnd);
+  }
+
+  rowNumber++;
+}
     })
     .catch(err => {
       console.error("Error loading brick wall:", err);
