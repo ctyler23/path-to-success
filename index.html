@@ -124,13 +124,13 @@ let index = 0;
 let rowNumber = 0;
 
 while (index < bricks.length) {
-  const rowType = rowNumber % 2 === 0 ? "five" : "six";
-  const rowLength = rowType === "five" ? 5 : 6;
+  const rowType = rowNumber % 2 === 0 ? "four" : "five";
+  const rowLength = rowType === "four" ? 4 : 5;
 
   const row = document.createElement("div");
   row.classList.add("brick-row");
 
-  if (rowType === "five") {
+  if (rowType === "four") {
     // Add spacer before row
     const spacerStart = document.createElement("div");
     spacerStart.classList.add("brick-spacer");
@@ -151,7 +151,7 @@ while (index < bricks.length) {
     row.appendChild(el);
   }
 
-  if (rowType === "five") {
+  if (rowType === "four") {
     // Add spacer after row
     const spacerEnd = document.createElement("div");
     spacerEnd.classList.add("brick-spacer");
