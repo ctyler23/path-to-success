@@ -154,6 +154,17 @@ function showThankYou() {
     const form = document.getElementById('donation-form');
     const name = form.elements['name'].value.trim();
     const email = form.elements['email'].value.trim();
+
+// Validate name is not just numbers
+  const nameField = form.elements['name'];
+  if (/^\\d+$/.test(name)) {
+    nameField.classList.add('error');
+    document.getElementById('form-status').textContent = '❌ Name cannot be only numbers.';
+    return false;
+  } else {
+    nameField.classList.remove('error');
+  }
+    
     const referralCode = generateReferralCode(name, email);
 
     document.getElementById('form-status').innerHTML =
