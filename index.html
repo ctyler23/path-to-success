@@ -127,11 +127,14 @@ while (index < bricks.length) {
   const rowType = rowNumber % 2 === 0 ? "five" : "six";
   const rowLength = rowType === "five" ? 5 : 6;
 
+  const row = document.createElement("div");
+  row.classList.add("brick-row");
+
   if (rowType === "five") {
-    // Add a spacer before row
+    // Add spacer before row
     const spacerStart = document.createElement("div");
     spacerStart.classList.add("brick-spacer");
-    container.appendChild(spacerStart);
+    row.appendChild(spacerStart);
   }
 
   for (let i = 0; i < rowLength && index < bricks.length; i++) {
@@ -145,16 +148,17 @@ while (index < bricks.length) {
       el.title = `${brick.count} referral${brick.count > 1 ? "s" : ""}`;
     }
 
-    container.appendChild(el);
+    row.appendChild(el);
   }
 
   if (rowType === "five") {
-    // Add a spacer after row
+    // Add spacer after row
     const spacerEnd = document.createElement("div");
     spacerEnd.classList.add("brick-spacer");
-    container.appendChild(spacerEnd);
+    row.appendChild(spacerEnd);
   }
 
+  container.appendChild(row);
   rowNumber++;
 }
     })
