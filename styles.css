@@ -188,10 +188,10 @@ a:hover {
 }
 .vertical-label {
   writing-mode: vertical-rl;
-  text-orientation: upright;
+  /*text-orientation: upright; */
   transform: rotate(45deg); /* So it reads bottom-up */
   font-weight: bold;
   color: #ffcc00;
   font-size: 2em;
-  margin-top: 2em;
+  margin-top: 0em;
 }
